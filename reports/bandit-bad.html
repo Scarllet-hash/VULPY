@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+    Bandit Report
+</title>
+
+<style>
+
+html * {
+    font-family: "Arial", sans-serif;
+}
+
+pre {
+    font-family: "Monaco", monospace;
+}
+
+.bordered-box {
+    border: 1px solid black;
+    padding-top:.5em;
+    padding-bottom:.5em;
+    padding-left:1em;
+}
+
+.metrics-box {
+    font-size: 1.1em;
+    line-height: 130%;
+}
+
+.metrics-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .25em;
+}
+
+.issue-description {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.candidate-issues {
+    margin-left: 2em;
+    border-left: solid 1px; LightGray;
+    padding-left: 5%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+.issue-block {
+    border: 1px solid LightGray;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+.issue-sev-high {
+    background-color: Pink;
+}
+
+.issue-sev-medium {
+    background-color: NavajoWhite;
+}
+
+.issue-sev-low {
+    background-color: LightCyan;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="metrics">
+    <div class="metrics-box bordered-box">
+        <div class="metrics-title">
+            Metrics:<br>
+        </div>
+        Total lines of code: <span id="loc">495</span><br>
+        Total lines skipped (#nosec): <span id="nosec">0</span>
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="results">
+    
+<div id="issue-0">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Call to requests without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href="bad/api_list.py" target="_blank">bad/api_list.py</a><br>
+    <b>Line number: </b>10<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+9	
+10	    r = requests.get(&#x27;http://127.0.1.1:5000/api/post/{}&#x27;.format(username))
+11	    if r.status_code != 200:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-1">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="bad/api_post.py" target="_blank">bad/api_post.py</a><br>
+    <b>Line number: </b>6<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+5	
+6	api_key_file = Path(&#x27;/tmp/supersecret.txt&#x27;)
+7	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-2">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Call to requests without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href="bad/api_post.py" target="_blank">bad/api_post.py</a><br>
+    <b>Line number: </b>16<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+15	
+16	        r = requests.post(&#x27;http://127.0.1.1:5000/api/key&#x27;, json={&#x27;username&#x27;:username, &#x27;password&#x27;:password})
+17	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-3">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Call to requests without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href="bad/api_post.py" target="_blank">bad/api_post.py</a><br>
+    <b>Line number: </b>30<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+29	    api_key = api_key_file.open().read()
+30	    r = requests.post(&#x27;http://127.0.1.1:5000/api/post&#x27;, json={&#x27;text&#x27;:message}, headers={&#x27;X-APIKEY&#x27;: api_key})
+31	    print(r.text)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-4">
+<div class="issue-block issue-sev-low">
+    <b>blacklist: </b> Consider possible security implications associated with the subprocess module.<br>
+    <b>Test ID:</b> B404<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="bad/brute.py" target="_blank">bad/brute.py</a><br>
+    <b>Line number: </b>3<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess" target="_blank">https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess</a><br>
+
+<div class="code">
+<pre>
+2	
+3	import subprocess
+4	import sys
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-5">
+<div class="issue-block issue-sev-low">
+    <b>subprocess_without_shell_equals_true: </b> subprocess call - check for execution of untrusted input.<br>
+    <b>Test ID:</b> B603<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="bad/brute.py" target="_blank">bad/brute.py</a><br>
+    <b>Line number: </b>21<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b603_subprocess_without_shell_equals_true.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b603_subprocess_without_shell_equals_true.html</a><br>
+
+<div class="code">
+<pre>
+20	for password in passwords:
+21	    result = subprocess.run([program, username, password], stdout=subprocess.DEVNULL)
+22	    if result.returncode == 0:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-6">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href="bad/db.py" target="_blank">bad/db.py</a><br>
+    <b>Line number: </b>19<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+18	    for u,p in users:
+19	        c.execute(&quot;INSERT INTO users (user, password, failures) VALUES (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%d&#x27;)&quot; %(u, p, 0))
+20	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-7">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href="bad/db_init.py" target="_blank">bad/db_init.py</a><br>
+    <b>Line number: </b>20<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+19	    for u,p in users:
+20	        c.execute(&quot;INSERT INTO users (username, password, failures, mfa_enabled, mfa_secret) VALUES (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%d&#x27;, &#x27;%d&#x27;, &#x27;%s&#x27;)&quot; %(u, p, 0, 0, &#x27;&#x27;))
+21	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-8">
+<div class="issue-block issue-sev-low">
+    <b>blacklist: </b> Standard pseudo-random generators are not suitable for security/cryptographic purposes.<br>
+    <b>Test ID:</b> B311<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/330.html" target="_blank">CWE-330</a><br>
+    <b>File: </b><a href="bad/libapi.py" target="_blank">bad/libapi.py</a><br>
+    <b>Line number: </b>14<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_calls.html#b311-random" target="_blank">https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_calls.html#b311-random</a><br>
+
+<div class="code">
+<pre>
+13	
+14	    key = hashlib.sha256(str(random.getrandbits(2048)).encode()).hexdigest()
+15	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-9">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="bad/libapi.py" target="_blank">bad/libapi.py</a><br>
+    <b>Line number: </b>16<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+15	
+16	    for f in Path(&#x27;/tmp/&#x27;).glob(&#x27;vulpy.apikey.&#x27; + username + &#x27;.*&#x27;):
+17	        print(&#x27;removing&#x27;, f)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-10">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="bad/libapi.py" target="_blank">bad/libapi.py</a><br>
+    <b>Line number: </b>20<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+19	
+20	    keyfile = &#x27;/tmp/vulpy.apikey.{}.{}&#x27;.format(username, key)
+21	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-11">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="bad/libapi.py" target="_blank">bad/libapi.py</a><br>
+    <b>Line number: </b>33<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+32	
+33	    for f in Path(&#x27;/tmp/&#x27;).glob(&#x27;vulpy.apikey.*.&#x27; + key):
+34	        return f.name.split(&#x27;.&#x27;)[2]
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-12">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="bad/libsession.py" target="_blank">bad/libsession.py</a><br>
+    <b>Line number: </b>21<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+20	                session = json.loads(base64.b64decode(cookie))
+21	    except Exception:
+22	        pass
+23	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-13">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href="bad/libuser.py" target="_blank">bad/libuser.py</a><br>
+    <b>Line number: </b>12<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+11	
+12	    user = c.execute(&quot;SELECT * FROM users WHERE username = &#x27;{}&#x27; and password = &#x27;{}&#x27;&quot;.format(username, password)).fetchone()
+13	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-14">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href="bad/libuser.py" target="_blank">bad/libuser.py</a><br>
+    <b>Line number: </b>25<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+24	
+25	    c.execute(&quot;INSERT INTO users (username, password, failures, mfa_enabled, mfa_secret) VALUES (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%d&#x27;, &#x27;%d&#x27;, &#x27;%s&#x27;)&quot; %(username, password, 0, 0, &#x27;&#x27;))
+26	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-15">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_sql_expressions: </b> Possible SQL injection vector through string-based query construction.<br>
+    <b>Test ID:</b> B608<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank">CWE-89</a><br>
+    <b>File: </b><a href="bad/libuser.py" target="_blank">bad/libuser.py</a><br>
+    <b>Line number: </b>53<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html</a><br>
+
+<div class="code">
+<pre>
+52	
+53	    c.execute(&quot;UPDATE users SET password = &#x27;{}&#x27; WHERE username = &#x27;{}&#x27;&quot;.format(password, username))
+54	    conn.commit()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-16">
+<div class="issue-block issue-sev-low">
+    <b>hardcoded_password_string: </b> Possible hardcoded password: 'aaaaaaa'<br>
+    <b>Test ID:</b> B105<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">CWE-259</a><br>
+    <b>File: </b><a href="bad/vulpy-ssl.py" target="_blank">bad/vulpy-ssl.py</a><br>
+    <b>Line number: </b>13<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b105_hardcoded_password_string.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b105_hardcoded_password_string.html</a><br>
+
+<div class="code">
+<pre>
+12	app = Flask(&#x27;vulpy&#x27;)
+13	app.config[&#x27;SECRET_KEY&#x27;] = &#x27;aaaaaaa&#x27;
+14	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-17">
+<div class="issue-block issue-sev-high">
+    <b>flask_debug_true: </b> A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.<br>
+    <b>Test ID:</b> B201<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/94.html" target="_blank">CWE-94</a><br>
+    <b>File: </b><a href="bad/vulpy-ssl.py" target="_blank">bad/vulpy-ssl.py</a><br>
+    <b>Line number: </b>29<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b201_flask_debug_true.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b201_flask_debug_true.html</a><br>
+
+<div class="code">
+<pre>
+28	
+29	app.run(debug=True, host=&#x27;127.0.1.1&#x27;, ssl_context=(&#x27;/tmp/acme.cert&#x27;, &#x27;/tmp/acme.key&#x27;))
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-18">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="bad/vulpy-ssl.py" target="_blank">bad/vulpy-ssl.py</a><br>
+    <b>Line number: </b>29<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+28	
+29	app.run(debug=True, host=&#x27;127.0.1.1&#x27;, ssl_context=(&#x27;/tmp/acme.cert&#x27;, &#x27;/tmp/acme.key&#x27;))
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-19">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="bad/vulpy-ssl.py" target="_blank">bad/vulpy-ssl.py</a><br>
+    <b>Line number: </b>29<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+28	
+29	app.run(debug=True, host=&#x27;127.0.1.1&#x27;, ssl_context=(&#x27;/tmp/acme.cert&#x27;, &#x27;/tmp/acme.key&#x27;))
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-20">
+<div class="issue-block issue-sev-low">
+    <b>hardcoded_password_string: </b> Possible hardcoded password: 'aaaaaaa'<br>
+    <b>Test ID:</b> B105<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">CWE-259</a><br>
+    <b>File: </b><a href="bad/vulpy.py" target="_blank">bad/vulpy.py</a><br>
+    <b>Line number: </b>16<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b105_hardcoded_password_string.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b105_hardcoded_password_string.html</a><br>
+
+<div class="code">
+<pre>
+15	app = Flask(&#x27;vulpy&#x27;)
+16	app.config[&#x27;SECRET_KEY&#x27;] = &#x27;aaaaaaa&#x27;
+17	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-21">
+<div class="issue-block issue-sev-high">
+    <b>flask_debug_true: </b> A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.<br>
+    <b>Test ID:</b> B201<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/94.html" target="_blank">CWE-94</a><br>
+    <b>File: </b><a href="bad/vulpy.py" target="_blank">bad/vulpy.py</a><br>
+    <b>Line number: </b>55<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b201_flask_debug_true.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b201_flask_debug_true.html</a><br>
+
+<div class="code">
+<pre>
+54	
+55	app.run(debug=True, host=&#x27;0.0.0.0&#x27;, port=5000, extra_files=&#x27;csp.txt&#x27;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-22">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_bind_all_interfaces: </b> Possible binding to all interfaces.<br>
+    <b>Test ID:</b> B104<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/605.html" target="_blank">CWE-605</a><br>
+    <b>File: </b><a href="bad/vulpy.py" target="_blank">bad/vulpy.py</a><br>
+    <b>Line number: </b>55<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.9.2/plugins/b104_hardcoded_bind_all_interfaces.html" target="_blank">https://bandit.readthedocs.io/en/1.9.2/plugins/b104_hardcoded_bind_all_interfaces.html</a><br>
+
+<div class="code">
+<pre>
+54	
+55	app.run(debug=True, host=&#x27;0.0.0.0&#x27;, port=5000, extra_files=&#x27;csp.txt&#x27;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

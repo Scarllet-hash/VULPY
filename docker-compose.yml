@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  # Application vulnérable Vulpy
+  vulpy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vulpy-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_HOST=0.0.0.0
+    volumes:
+      - ./bad:/app/bad
+    networks:
+      - devops-network
+    restart: unless-stopped
+
+  # Jenkins pour CI/CD
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    container_name: jenkins
+    user: root
+    ports:
+      - "8090:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - C:/vulpy:/vulpy
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - devops-network
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    restart: unless-stopped
+
+networks:
+  devops-network:
+    driver: bridge
+
+volumes:
+  jenkins_home:

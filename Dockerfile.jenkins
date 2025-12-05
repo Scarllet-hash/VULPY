@@ -1,0 +1,22 @@
+FROM jenkins/jenkins:lts
+
+USER root
+
+# Installer Python 3 + pip + Bandit dans Jenkins
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    pip install bandit --break-system-packages
+
+# Installer client Docker
+RUN apt-get update && \
+    apt-get install -y docker.io
+
+# Ajouter Jenkins dans le groupe docker
+RUN usermod -aG docker jenkins
+
+# Ajouter docker au PATH
+RUN ln -s /usr/bin/docker /usr/local/bin/docker
+ENV PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
+
+
+USER jenkins
